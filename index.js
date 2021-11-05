@@ -157,7 +157,7 @@ $('#main-form').on('submit', function(event) {
         xhr.send();
         xhr.onload = function () {
             if (xhr.status != 200) {
-                alert(`Ошибка ${xhr.status}: ${xhr.statusText}`);
+                alert(`Error ${xhr.status}: ${xhr.statusText}`);
                 alert(xhr.responseText);
             } else {
                 console.log(xhr.responseText);
