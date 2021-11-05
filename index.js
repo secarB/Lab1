@@ -160,6 +160,7 @@ $('#main-form').on('submit', function(event) {
                 alert(`Error ${xhr.status}: ${xhr.statusText}`);
                 alert(xhr.responseText);
             } else {
+                console.log("submitted");
                 console.log(xhr.responseText);
                 let result = JSON.parse(xhr.responseText);
 
