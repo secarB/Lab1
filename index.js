@@ -43,11 +43,11 @@ function validateX() {
     let x_element = $("#x-values :button.active")[0]
     if (x_element===undefined) {   
         $('#errors').append(errorX);
-        error($('#x-values'));
+        showError($('#x-values'));
         return false;
     } else {
         errorX.remove();
-        removeError($('#x-values'));
+        hideError($('#x-values'));
         inputX = x_element.value;
         return true;
     }
@@ -67,14 +67,14 @@ function validateY() {
         errorY1.remove();
         errorY2.remove();
         $('#errors').append(errorY3);
-        error($('#y-values'))
+        showError($('#y-values'))
         return false;
     }else{
         if ((/[^0-9.-]/i.test(inputY))){
             errorY2.remove();
             errorY3.remove();
             $('#errors').append(errorY1);
-            error($('#y-values'));
+            showError($('#y-values'));
             return false;
         }else{
 
@@ -82,13 +82,13 @@ function validateY() {
                 errorY1.remove();
                 errorY2.remove();
                 errorY3.remove();
-                removeError($('#y-values'));
+                hideError($('#y-values'));
                 return true;
             }else{
                 errorY1.remove();
                 errorY3.remove();
                 $('#errors').append(errorY2);
-                error($('#y-values'));
+                showError($('#y-values'));
                 return false;
             }
         }
@@ -108,10 +108,10 @@ function validateR() {
             }
         });
         errorR.remove();
-        removeError($('#r-values'));
+        hideError($('#r-values'));
         return true;
     } else {
-        error($('#r-values'));
+        showerror($('#r-values'));
         $('#errors').append(errorR);
         return false;
     }
@@ -121,19 +121,19 @@ function validateForm() {
     validateY();
     validateR();
     if (validateX() && validateY() && validateR()){
-        removeError($('#errors'));
+        hideError($('#errors'));
         return true;
     }else{
         $('#errors p').css("text-align","center");
-        error($('#errors'));
+        showError($('#errors'));
         return false;
     }
 }
-function error(elem){
+function showError(elem){
     elem.css("border","2px solid #f50505");
     elem.css("box-shadow", "inset 0px 0 2px 1px #f50505");
 }
-function removeError(elem){
+function hideError(elem){
     elem.css("border","");
     elem.css("box-shadow", "");
 }
