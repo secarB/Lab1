@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lab 1 web programming</title>
+    <script src="https://cdn.jsdelivr.net/npm/@svgdotjs/svg.js@3.0/dist/svg.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <style>
+      #header {
+        width: 1800px;
+        text-align: center;
+        background-color: #a3ffc2;
+        padding: 5px;
+      }
+      #content {
+        text-align: center;
+        background-color: #ffffb8;
+        height: 500px;
+        width: 1800px;
+      }
+      #graph {
+        background-color: #39f1d9;
+        height: 500px;
+        width: 800px;
+        float: left;
+      }
+      #x-values input {
+        width: 40px;
+        font-size: 12px;
+        font-family: "Georgia", serif;
+      }
+      #x-values input:hover {
+        color: darkred;
+      }
+      .x-button input:checked {
+        background-color: red;
+      }
+      .active {
+        color: seagreen;
+      }
+      #footer {
+        background-color: #80daf5;
+        text-align: center;
+        width: 1800px;
+        clear: both;
+        text-align: center;
+        padding: 5px;
+      }
+      #result-table {
+        width: 1800px;
+        border: 1px solid black;
+        text-align: center;
+        border-collapse: collapse;
+      }
+      #result-table th {
+        font-weight: bold;
+        padding: 5px;
+        background: #efefef;
+        border: 1px solid #dddddd;
+      }
+      #result-table td {
+        border: 1px solid #dddddd;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+        <h1>Web programming Lab1</h1>
+        <p>Ле Фан Фу Куок P3212</p>
+        <p>Variant: 12011</p>
+      </div>
+      <div id="graph">
+        <b>Graph</b>
+      </br> 
+        <img
+          src="https://media.discordapp.net/attachments/753929285458460743/906195512716308520/unknown.png"
+          alt="Can't file that img unlucky"
+        />
+      </div>
+      <div id="content">
+        <b>Graph</b>
+        <b>Value</b>
+        <br />
+        <form id="main-form" action="">
+          X value:
+          <div id="x-values">
+            <input type="button" name="x" value="-2" />
+            <input type="button" name="x" value="-1.5" />
+            <input type="button" name="x" value="-1" />
+            <input type="button" name="x" value="-0.5" />
+            <input type="button" name="x" value="0" />
+            <input type="button" name="x" value="0.5" />
+            <input type="button" name="x" value="1" />
+            <input type="button" name="x" value="1.5" />
+            <input type="button" name="x" value="2" />
+          </div>
+          Y value:
+          <br />
+          <div id="y-values">
+            <input type="text" id="y-name" name="y" size="20" />
+          </div>
+          <br />
+          Z value:
+          <br />
+
+          <div id="r-values">
+            <input type="checkbox" class="r-checkbox" name="z" value="1" />
+            <label for="box1"> 1</label><br />
+            <input type="checkbox" class="r-checkbox" name="z" value="2" />
+            <label for="box2"> 2</label><br />
+            <input type="checkbox" class="r-checkbox" name="z" value="3" />
+            <label for="box3"> 3</label><br />
+            <input type="checkbox" class="r-checkbox" name="z" value="4" />
+            <label for="box4"> 4</label><br />
+            <input type="checkbox" class="r-checkbox" name="z" value="5" />
+            <label for="box5"> 5</label><br /><br />
+          </div>
+          <div class="buttons">
+            <input id="submit" type="submit" value="Submit" />
+          </div>
+          <div id="errors"></div>
+        </form>
+      </div>
+
+      <div id="footer">
+        <table id="result-table" class="result-table">
+          <tr class="table-header">
+            <th class="coords-col">X</th>
+            <th class="coords-col">Y</th>
+            <th class="coords-col">R</th>
+            <th class="time-col">Current time</th>
+            <th class="time-col">Time script</th>
+            <th class="hitres-col">Result</th>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
