@@ -6,14 +6,23 @@
     <script src="https://cdn.jsdelivr.net/npm/@svgdotjs/svg.js@3.0/dist/svg.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <style>
-      #header {
-        width: 1800px;
+      #container {
         text-align: center;
+      }
+      [title = "header"] {
+        width: 1800px;
         background-color: #a3ffc2;
         padding: 5px;
       }
+      [title = "author-name"] {
+        font-family: sans-serif;
+       font-size: 30px;
+      }
+      [title = "variant"] {
+        font-family: serif;
+       font-size: 25px;
+      }
       #content {
-        text-align: center;
         background-color: #ffffb8;
         height: 500px;
         width: 1800px;
@@ -37,6 +46,12 @@
       }
       .active {
         color: seagreen;
+      }
+      #errors
+      {
+        color : red;
+        font-size: 20px;
+        font-family: "Georgia", serif;
       }
       #footer {
         background-color: #80daf5;
@@ -66,16 +81,16 @@
   </head>
   <body>
     <div id="container">
-      <div id="header">
+      <div id="header" title="header">
         <h1>Web programming Lab1</h1>
-        <p>Ле Фан Фу Куок P3212</p>
-        <p>Variant: 12011</p>
+        <p title="author-name">Ле Фан Фу Куок P3212</p>
+        <p title="variant">Variant: 12011</p>
       </div>
       <div id="graph">
         <b>Graph</b>
       </br> 
         <img
-          src="https://media.discordapp.net/attachments/753929285458460743/906195512716308520/unknown.png"
+          src="graph.png"
           alt="Can't file that img unlucky"
         />
       </div>
@@ -137,6 +152,6 @@
         </table>
       </div>
     </div>
-    <script src="index.js"></script>
+    <script src="js/index.js"></script>
   </body>
 </html>
