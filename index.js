@@ -43,11 +43,9 @@ function validateX() {
     let x_element = $("#x-values :button.active")[0]
     if (x_element===undefined) {   
         $('#errors').append(errorX);
-     //   error($('#x-values'));
         return false;
     } else {
         errorX.remove();
-      //  removeError($('#x-values'));
         inputX = x_element.value;
         return true;
     }
@@ -67,14 +65,12 @@ function validateY() {
         errorY1.remove();
         errorY2.remove();
         $('#errors').append(errorY3);
-      //  error($('#y-values'))
         return false;
     }else{
         if ((/[^0-9.-]/i.test(inputY))){
             errorY2.remove();
             errorY3.remove();
             $('#errors').append(errorY1);
-         //   error($('#y-values'));
             return false;
         }else{
 
@@ -82,13 +78,11 @@ function validateY() {
                 errorY1.remove();
                 errorY2.remove();
                 errorY3.remove();
-                removeError($('#y-values'));
                 return true;
             }else{
                 errorY1.remove();
                 errorY3.remove();
                 $('#errors').append(errorY2);
-       //         error($('#y-values'));
                 return false;
             }
         }
@@ -111,10 +105,8 @@ function validateR() {
             }
         });
         errorR.remove();
-       // removeError($('#r-values'));
         return true;
     } else {
-       // error($('#r-values'));
         $('#errors').append(errorR);
         return false;
     }
@@ -124,11 +116,9 @@ function validateForm() {
     validateY();
     validateR();
     if (validateX() && validateY() && validateR()){
-     //   removeError($('#errors'));
         return true;
     }else{
         $('#errors p').css("text-align","center");
-      //  error($('#errors'));
         return false;
     }
 }
