@@ -159,6 +159,7 @@ $('#main-form').on('submit', function(event) {
                 alert(`Error ${xhttp.status}: ${xhttp.statusText}`);
                 alert(xhttp.responseText);
             } else {
+                console.log("submitted");
                 console.log(xhttp.responseText);
                 let result = JSON.parse(xhttp.responseText);
 
