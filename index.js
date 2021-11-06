@@ -1,6 +1,6 @@
 load();
 /**
- * load old result 
+ * load old result .. 
  */
  function load(){
     console.log("Starting");
@@ -31,7 +31,7 @@ load();
     };
 }
 $("#x-values :button").click(function () {
-    $("#x-values :button").removeClass("active") /*input[type='button']*/
+    $("#x-values :button").removeClass("active") 
     $(this).addClass("active")
 });
 let elemWithErrors=document.getElementById('button')
