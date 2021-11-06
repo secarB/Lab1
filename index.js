@@ -1,19 +1,19 @@
 load();
 /**
- * load result when u reload page
+ * load old result 
  */
  function load(){
     console.log("Starting");
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'tiredwithphp.php',true);
-    xhr.send();
-    xhr.onload = function () {
-        if (xhr.status != 200) {
-            alert(`Error ${xhr.status}: ${xhr.statusText}`);
-            alert(xhr.responseText);
+    var xhttp = new XMLHttpRequest();
+    xhttp.open('GET', 'tiredwithphp.php',true);
+    xhttp.send();
+    xhttp.onload = function () {
+        if (xhttp.status != 200) {
+            alert(`Error ${xhttp.status}: ${xhttp.statusText}`);
+            alert(xhttp.responseText);
         } else {
-            console.log(xhr.responseText);
-            let result = JSON.parse(xhr.responseText)
+            console.log(xhttp.responseText);
+            let result = JSON.parse(xhttp.responseText)
             for (let i in result.response){
                 if (result.response[i].validate) {
                     let newRow = '<tr>';
@@ -152,17 +152,17 @@ $('#main-form').on('submit', function(event) {
         }
 
         data += '&timezone=' + new Date().getTimezoneOffset();
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'tiredwithphp.php'+'?'+data,true);
-        xhr.send();
-        xhr.onload = function () {
-            if (xhr.status != 200) {
-                alert(`Error ${xhr.status}: ${xhr.statusText}`);
-                alert(xhr.responseText);
+        var xhttp = new XMLHttpRequest();
+        xhttp.open('GET', 'tiredwithphp.php'+'?'+data,true);
+        xhttp.send();
+        xhttp.onload = function () {
+            if (xhttp.status != 200) {
+                alert(`Error ${xhttp.status}: ${xhttp.statusText}`);
+                alert(xhttp.responseText);
             } else {
                 console.log("submitted");
-                console.log(xhr.responseText);
-                let result = JSON.parse(xhr.responseText);
+                console.log(xhttp.responseText);
+                let result = JSON.parse(xhttp.responseText);
 
                 for (let i in result.response){
                     if (result.response[i].validate) {
