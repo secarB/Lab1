@@ -1,6 +1,6 @@
 load();
 /**
- * load old result .. 
+ * load old result
  */
  function load(){
     console.log("Starting");
@@ -31,7 +31,7 @@ load();
     };
 }
 $("#x-values :button").click(function () {
-    $("#x-values :button").removeClass("active") 
+    $("#x-values :button").removeClass("active") /*input[type='button']*/
     $(this).addClass("active")
 });
 let elemWithErrors=document.getElementById('button')
@@ -43,11 +43,11 @@ function validateX() {
     let x_element = $("#x-values :button.active")[0]
     if (x_element===undefined) {   
         $('#errors').append(errorX);
-        showError($('#x-values'));
+        error($('#x-values'));
         return false;
     } else {
         errorX.remove();
-        hideError($('#x-values'));
+        removeError($('#x-values'));
         inputX = x_element.value;
         return true;
     }
@@ -67,14 +67,14 @@ function validateY() {
         errorY1.remove();
         errorY2.remove();
         $('#errors').append(errorY3);
-        showError($('#y-values'))
+        error($('#y-values'))
         return false;
     }else{
         if ((/[^0-9.-]/i.test(inputY))){
             errorY2.remove();
             errorY3.remove();
             $('#errors').append(errorY1);
-            showError($('#y-values'));
+            error($('#y-values'));
             return false;
         }else{
 
@@ -82,13 +82,13 @@ function validateY() {
                 errorY1.remove();
                 errorY2.remove();
                 errorY3.remove();
-                hideError($('#y-values'));
+                removeError($('#y-values'));
                 return true;
             }else{
                 errorY1.remove();
                 errorY3.remove();
                 $('#errors').append(errorY2);
-                showError($('#y-values'));
+                error($('#y-values'));
                 return false;
             }
         }
@@ -108,10 +108,10 @@ function validateR() {
             }
         });
         errorR.remove();
-        hideError($('#r-values'));
+        removeError($('#r-values'));
         return true;
     } else {
-        showerror($('#r-values'));
+        error($('#r-values'));
         $('#errors').append(errorR);
         return false;
     }
@@ -121,19 +121,19 @@ function validateForm() {
     validateY();
     validateR();
     if (validateX() && validateY() && validateR()){
-        hideError($('#errors'));
+        removeError($('#errors'));
         return true;
     }else{
         $('#errors p').css("text-align","center");
-        showError($('#errors'));
+        error($('#errors'));
         return false;
     }
 }
-function showError(elem){
+function error(elem){
     elem.css("border","2px solid #f50505");
     elem.css("box-shadow", "inset 0px 0 2px 1px #f50505");
 }
-function hideError(elem){
+function removeError(elem){
     elem.css("border","");
     elem.css("box-shadow", "");
 }
@@ -150,7 +150,6 @@ $('#main-form').on('submit', function(event) {
         for (let i=0;i<multipleR.length;i++){
             data+='&r[]='+multipleR[i];
         }
-
         data += '&timezone=' + new Date().getTimezoneOffset();
         var xhttp = new XMLHttpRequest();
         xhttp.open('GET', 'tiredwithphp.php'+'?'+data,true);
@@ -160,7 +159,6 @@ $('#main-form').on('submit', function(event) {
                 alert(`Error ${xhttp.status}: ${xhttp.statusText}`);
                 alert(xhttp.responseText);
             } else {
-                console.log("submitted");
                 console.log(xhttp.responseText);
                 let result = JSON.parse(xhttp.responseText);
 
