@@ -30,6 +30,9 @@ load();
         }
     };
 }
+/**
+ * make x button work  xD
+ */
 $("#x-values :button").click(function () {
     $("#x-values :button").removeClass("active") /*input[type='button']*/
     $(this).addClass("active")
