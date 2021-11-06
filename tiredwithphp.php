@@ -19,7 +19,7 @@ function validationXYR($x, $y, $r)
 
 function checkTriangle($x, $y, $r)
 {
-    return $x <= 0 && $y >= 0 && $x <= ($y + $r) / 2;
+    return $x <= 0 && $y >= 0 && $y <= ($x * 2 + $r);
 }
 
 function checkRectangle($x, $y, $r)
