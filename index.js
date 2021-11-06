@@ -43,11 +43,11 @@ function validateX() {
     let x_element = $("#x-values :button.active")[0]
     if (x_element===undefined) {   
         $('#errors').append(errorX);
-        error($('#x-values'));
+     //   error($('#x-values'));
         return false;
     } else {
         errorX.remove();
-        removeError($('#x-values'));
+      //  removeError($('#x-values'));
         inputX = x_element.value;
         return true;
     }
@@ -67,14 +67,14 @@ function validateY() {
         errorY1.remove();
         errorY2.remove();
         $('#errors').append(errorY3);
-        error($('#y-values'))
+      //  error($('#y-values'))
         return false;
     }else{
         if ((/[^0-9.-]/i.test(inputY))){
             errorY2.remove();
             errorY3.remove();
             $('#errors').append(errorY1);
-            error($('#y-values'));
+         //   error($('#y-values'));
             return false;
         }else{
 
@@ -88,16 +88,19 @@ function validateY() {
                 errorY1.remove();
                 errorY3.remove();
                 $('#errors').append(errorY2);
-                error($('#y-values'));
+       //         error($('#y-values'));
                 return false;
             }
         }
 
     }
 }
-let multipleR;
+let multipleR; 
 let errorR= document.createElement("p");
 errorR.textContent = "R can't be empty";
+/**
+ * get multiple R value
+ */
 function validateR() {
     let checkboxes=document.getElementsByName('z');
     multipleR=[];
@@ -108,10 +111,10 @@ function validateR() {
             }
         });
         errorR.remove();
-        removeError($('#r-values'));
+       // removeError($('#r-values'));
         return true;
     } else {
-        error($('#r-values'));
+       // error($('#r-values'));
         $('#errors').append(errorR);
         return false;
     }
@@ -121,23 +124,14 @@ function validateForm() {
     validateY();
     validateR();
     if (validateX() && validateY() && validateR()){
-        removeError($('#errors'));
+     //   removeError($('#errors'));
         return true;
     }else{
         $('#errors p').css("text-align","center");
-        error($('#errors'));
+      //  error($('#errors'));
         return false;
     }
 }
-function error(elem){
-    elem.css("border","2px solid #f50505");
-    elem.css("box-shadow", "inset 0px 0 2px 1px #f50505");
-}
-function removeError(elem){
-    elem.css("border","");
-    elem.css("box-shadow", "");
-}
-
 /**
  * submit 
  */
