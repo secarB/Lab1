@@ -22,22 +22,26 @@ if (!isset($_GET["x"])) {
     foreach ($_GET['r'] as $r) {
         $timezoneOffset = $_GET['timezone'];
         $isValid = (isset($x) && is_numeric($x) && isset($r) && is_numeric($r) && validationY($y)) ? true : false;
-        $currentTime = date("H:i:s", time() - $timezoneOffset * 60);
-        $scriptTime = round(microtime(true) - $_SERVER['REQUEST_TIME_FLOAT'], 7);
-        $response = $isValid ? 'true' : 'false';
-        $checkTriangle = ($x <= 0 && $y >= 0 && $y <= ($x * 2 + $r)) ? true : false;
-        $checkRectangle = ($y <= 0 && $x <= 0 && $y <= $r / 2 && $x <= $r) ? true : false;
-        $checkCircle = ($x >= 0 && $y <= 0 && sqrt($x * $x + $y * $y) <= $r / 2) ? true : false;
-        $result = ($isValid &&  ($checkTriangle || $checkCircle || $checkRectangle)) ? 'true' : 'false';
-        $jsonData = '{' .
-            "\"validate\":$response," .
-            "\"xval\":$x," .
-            "\"yval\":$y," .
-            "\"rval\":$r," .
-            "\"curtime\":\"$currentTime\"," .
-            "\"scripttime\":\"$scriptTime\"," .
-            "\"inarea\":$result" .
-            "}";
+
+        if (!$isValid) $jsonData = "{}";
+        else {
+            $currentTime = date("H:i:s", time() - $timezoneOffset * 60);
+            $scriptTime = round(microtime(true) - $_SERVER['REQUEST_TIME_FLOAT'], 7);
+            $response = $isValid ? 'true' : 'false';
+            $checkTriangle = ($x <= 0 && $y >= 0 && $y <= ($x * 2 + $r)) ? true : false;
+            $checkRectangle = ($y <= 0 && $x <= 0 && $y <= $r / 2 && $x <= $r) ? true : false;
+            $checkCircle = ($x >= 0 && $y <= 0 && sqrt($x * $x + $y * $y) <= $r / 2) ? true : false;
+            $result = ($isValid &&  ($checkTriangle || $checkCircle || $checkRectangle)) ? 'true' : 'false';
+            $jsonData = '{' .
+                "\"validate\":$response," .
+                "\"xval\":$x," .
+                "\"yval\":$y," .
+                "\"rval\":$r," .
+                "\"curtime\":\"$currentTime\"," .
+                "\"scripttime\":\"$scriptTime\"," .
+                "\"inarea\":$result" .
+                "}";
+        }
         array_push($_SESSION['js'], $jsonData);
         $resp = $resp . $jsonData . ',';
     }
