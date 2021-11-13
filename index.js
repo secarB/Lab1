@@ -1,3 +1,10 @@
+/**
+ * make x button work  xD
+ */
+ $("#x-values :button").click(function () {
+    $("#x-values :button").removeClass("active") /*input[type='button']*/
+    $(this).addClass("active")
+});
 load();
 /**
  * load old result
@@ -30,13 +37,6 @@ load();
         }
     };
 }
-/**
- * make x button work  xD
- */
-$("#x-values :button").click(function () {
-    $("#x-values :button").removeClass("active") /*input[type='button']*/
-    $(this).addClass("active")
-});
 let elemWithErrors=document.getElementById('button')
 let errorX=document.createElement("p");
 errorX.textContent = "X can't be empty";
